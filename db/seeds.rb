@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Importa a gem faker para gerar dados reais
+require 'faker'
+
+
+# Cria Centros de Custo
+5.times do |x|
+  CostCenter.create(name:Faker::Company.industry)
+end
+
+5.times do |x|
+  App.create(name: "aplicação #{x}", cost_center_id: x+1)
+end
