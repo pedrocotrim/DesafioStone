@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cost_center: one
+  authentication_token: 
+  name: MyString
+
+two:
+  cost_center: two
+  authentication_token: 
+  name: MyString
