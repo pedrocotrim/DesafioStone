@@ -8,7 +8,6 @@
 # Importa a gem faker para gerar dados reais
 require 'faker'
 
-
 # Cria Centros de Custo
 5.times do |x|
   CostCenter.create(name:Faker::Company.industry)
