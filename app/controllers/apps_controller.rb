@@ -1,5 +1,13 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :update, :destroy]
+  before_action :authorize_call, except: :get_token
+
+
+  def get_token
+    @app = App.find(params[:id])
+    token = {token: @app.authentication_token}
+    render json: token
+  end
 
   # GET /apps
   def index
@@ -48,4 +56,5 @@ class AppsController < ApplicationController
     def app_params
       params.require(:app).permit(:cost_center_id, :authentication_token, :name)
     end
+
 end

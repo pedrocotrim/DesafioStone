@@ -1,5 +1,6 @@
 class CostCentersController < ApplicationController
-  before_action :set_cost_center, only: [:show, :update, :destroy]
+  before_action :authorize_call
+  before_action :set_cost_center, only: :show
 
   # GET /cost_centers
   def index
