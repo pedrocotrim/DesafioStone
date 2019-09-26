@@ -1,11 +1,12 @@
 class EmailsController < ApplicationController
   #before_action :authorize_call
 
-  def send
+  def send_mail
     @email = Email.new(email_params)
     if @email.save
       params[:recipients].each do |x|
-        
+        SentMail.create(email: @email, recipient: x, opened: false)
+      end
     end
   end
 
