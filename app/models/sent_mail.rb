@@ -6,7 +6,7 @@ class SentMail < ApplicationRecord
   private
 
   def send_mail
-    SendMailer.with(email: self.email, recipient: self.recipient).send_mail.deliver_now!
+    SendMailer.with(email: self.email, recipient: self.recipient).send_mail.deliver_later
   end
 
 end
