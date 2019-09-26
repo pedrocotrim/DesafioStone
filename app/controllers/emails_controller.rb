@@ -1,0 +1,26 @@
+class EmailsController < ApplicationController
+  #before_action :authorize_call
+
+  def send
+    @email = Email.new(email_params)
+    if @email.save
+      params[:recipients].each do |x|
+        
+    end
+  end
+
+  def track
+    @email = SentMail.find_by(id: params[:id])
+    if !@email&.opened
+      @email&.opened = true
+      @email&.save
+    end
+    send_file 'public/invis.png', type: 'image/png', disposition: 'inline'
+  end
+
+  private
+
+  def email_params
+    params.require(:email).permit(:sender, :sender_name, :body, :title, :priority)
+  end
+end

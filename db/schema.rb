@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_230547) do
+ActiveRecord::Schema.define(version: 2019_09_25_232001) do
 
   create_table "apps", force: :cascade do |t|
     t.integer "cost_center_id"
@@ -26,6 +26,25 @@ ActiveRecord::Schema.define(version: 2019_09_24_230547) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.text "body"
+    t.string "title"
+    t.integer "priority"
+    t.string "sender"
+    t.string "sender_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sent_mails", force: :cascade do |t|
+    t.integer "email_id"
+    t.string "recipient"
+    t.boolean "opened"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_sent_mails_on_email_id"
   end
 
 end
