@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authorize_call
 require 'rest-client'
   def send_message
-    @message = Message.new(message_params)
+    @message = Message.new(body: params[:body])
     if @message.save
       request = { sendSmsMultiRequest: {
           aggregateId: @message.id,
@@ -22,11 +22,5 @@ require 'rest-client'
       RestClient.post("https://private-anon-7a4c405f25-zenviasms.apiary-mock.com/services/send-sms-multiple", request.to_json, {content_type: :json, Authorization: "Basic YWRtaW46YWRtaW4=", accept: :json})
       render json: { tracking_id: @message.id }, status: :created
     end
-  end
-
-  private
-
-  def message_params
-    params.permit(:body)
   end
 end
