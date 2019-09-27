@@ -1,2 +1,2 @@
 <%= @body.html_safe %>
-<%= "<img src=\"#{tracking_url(@email.id)}\"".html_safe %>
+<%= "<img src=\"#{tracking_url(@email.id, host: @host)}\"".html_safe %>

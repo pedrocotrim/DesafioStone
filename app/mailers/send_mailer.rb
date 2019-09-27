@@ -14,6 +14,11 @@ class SendMailer < ApplicationMailer
   def send_mail
     @body = params[:email].body
     @email = params[:email]
+    if Rails.env.production?
+      @host = "desafio-stn-pedro-cotrim.herokuapp.com"
+    else  
+      @host = 'localhost:3000'
+    end
     mail from: "#{@email.sender_name} <#{@email.sender}>", to: params[:recipient], subject: @email.title
   end
 
