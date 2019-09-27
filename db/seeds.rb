@@ -13,6 +13,19 @@ require 'faker'
   CostCenter.create(name:Faker::Company.industry)
 end
 
+#Cria aplicações atreladas aos centros de custo
 5.times do |x|
   App.create(name: "aplicação #{x}", cost_center_id: x+1)
+end
+
+#Cria entregas
+5.times do |x|
+  Delivery.create(address: "#{Faker::Address.street_address} #{Faker::Address.secondary_address}", status: "a caminho" )
+end
+
+#Cria despesas
+5.times do |x|
+  5.times do |y|
+    Expense.create(amount: rand 100..1000000, cost_center_id: x)
+  end
 end

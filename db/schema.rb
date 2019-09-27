@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_232001) do
+ActiveRecord::Schema.define(version: 2019_09_27_210513) do
 
   create_table "apps", force: :cascade do |t|
     t.integer "cost_center_id"
@@ -28,12 +28,33 @@ ActiveRecord::Schema.define(version: 2019_09_25_232001) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deliveries", force: :cascade do |t|
+    t.string "status"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "emails", force: :cascade do |t|
     t.text "body"
     t.string "title"
     t.integer "priority"
     t.string "sender"
     t.string "sender_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "cost_center_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cost_center_id"], name: "index_expenses_on_cost_center_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

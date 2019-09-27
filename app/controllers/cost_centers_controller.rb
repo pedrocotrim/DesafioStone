@@ -9,6 +9,15 @@ class CostCentersController < ApplicationController
     render json: @cost_centers
   end
 
+  def billing
+    total = 0
+    @cost_center.expenses.each do |x|
+      total+=x.amount
+    end
+    #Amount é um valor em centavos, por isso precisa ser divido por 100
+    render json: { despesas: "R$#{total/100}" }
+  end
+
   # GET /cost_centers/1
   def show
     render json: @cost_center

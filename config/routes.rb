@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :expenses
   resources :deliveries
   post 'delivery_status', to: 'delivery#return_status'
+  get 'billing', to: 'cost_centers#billing'
   resources :apps
   resources :cost_centers
   get 'login/:id', to: 'apps#get_token'
