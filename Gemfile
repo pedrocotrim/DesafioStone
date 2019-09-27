@@ -51,3 +51,5 @@ gem 'active_model_serializers'
 
 # Faker
 gem 'faker'
+
+gem 'rest-client'
