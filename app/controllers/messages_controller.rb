@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :authorize_call
 require 'rest-client'
   def send_message
     @message = Message.new(message_params)
