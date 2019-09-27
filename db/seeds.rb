@@ -26,6 +26,6 @@ end
 #Cria despesas
 5.times do |x|
   5.times do |y|
-    Expense.create(amount: rand 100..1000000, cost_center_id: x)
+    Expense.create(amount: rand(100..1000000), cost_center_id: x)
   end
 end
