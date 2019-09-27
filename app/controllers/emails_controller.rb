@@ -14,7 +14,7 @@ class EmailsController < ApplicationController
   end
 
   def mail_stats
-    @mail = Email.find_by(params[:id])
+    @mail = Email.find_by(id: params[:id])
     opened_mail = SentMail.where(email: @mail, opened: true)
     stats = { 
       opened: "#{((opened_mail.length/@mail.sent_mails.length)*100).round(3)}\%",
