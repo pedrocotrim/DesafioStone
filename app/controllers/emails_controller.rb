@@ -7,7 +7,7 @@ class EmailsController < ApplicationController
       params[:recipients].each do |x|
         SentMail.create(email: @email, recipient: x, opened: false)
       end
-      render json: @email, status: :created, location: @email
+      render json: @email, status: :created
     else
       render json: @email.errors, status: :unprocessable_entity
     end
